@@ -1,14 +1,13 @@
 import sqlite3
 import List
 
-# Tworzymy mapę sieci na podstawie NETWORK_INFRASTRUCTURE
 def build_parent_dict(network_data):
     parent_dict = {}
     for row in network_data:
-        parent_dict[row[0]] = row[2] if row[2] else None  # PARENT_ACCESS_POINT_ID może być None (root)
+        parent_dict[row[0]] = row[2] if row[2] else None  # PARENT_ACCESS_POINT_ID może być None
     return parent_dict
 
-# Znajduje całą ścieżkę od klienta do korzenia sieci (ważne dla downtime)
+
 def get_access_point_chain(customer_access_point, parent_dict):
     chain = []
     current = customer_access_point
@@ -32,22 +31,22 @@ def calculate_discount(customer_access_point, downtime_log, parent_dict, discoun
 # Tworzymy mapę sieci na podstawie NETWORK_INFRASTRUCTURE
 parent_dict = build_parent_dict(List.NETWORK_INFRASTRUCTURE)
 
-# Połączenie z bazą danych
+
 connection = sqlite3.connect("database.db")
 cursor = connection.cursor()
 
-# Wypełnianie tabeli INVOICES
+
 for customer in List.CUSTOMERS:
     cursor.execute('''
         INSERT INTO INVOICES (CUSTOMER_ID, CUSTOMER_NAME)
         VALUES (?, ?)
     ''', (customer[0], customer[1]))
 
-# Pobieramy wszystkie faktury (ID + CUSTOMER_ID)
+# Pobierz wszystkie faktury 
 cursor.execute('SELECT INVOICE_ID, CUSTOMER_ID FROM INVOICES')
 invoices = cursor.fetchall()
 
-# Dla każdej faktury dodajemy linie fakturowe
+# Linie faktury
 for invoice in invoices:
     invoice_id, customer_id = invoice
     customer_data = next((cust for cust in List.CUSTOMERS if cust[0] == customer_id), None)
@@ -57,13 +56,13 @@ for invoice in invoices:
     monthly_amount_due = float(customer_data[3])  # Kwota subskrypcji
     customer_access_point = customer_data[2]  # Punkt dostępowy klienta
 
-    # 1. Wstawiamy linię "Subscription"
+
     cursor.execute('''
         INSERT INTO INVOICE_LINES (INVOICE_ID, LINE_NUMBER, TITLE, LINE_AMOUNT)
         VALUES (?, ?, ?, ?)
     ''', (invoice_id, 1, "Subscription", monthly_amount_due))
 
-    # 2. Sprawdzamy downtime i naliczamy rabat
+
     discount = calculate_discount(customer_access_point, List.TELEMETRY_DOWNTIME_LOG, parent_dict)
     if discount > 0:
         cursor.execute('''
@@ -71,10 +70,9 @@ for invoice in invoices:
             VALUES (?, ?, ?, ?)
         ''', (invoice_id, 2, "Rebate", -discount))  # Rabat jako wartość ujemna
 
-# Zatwierdzanie zmian i zamykanie połączenia
 connection.commit()
 
-# Wyświetlenie zawartości tabel
+
 cursor.execute('SELECT * FROM INVOICES')
 print("INVOICES:")
 print(cursor.fetchall())
