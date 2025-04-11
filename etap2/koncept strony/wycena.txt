@@ -1,0 +1,82 @@
+typ klienta: 
+- binzes 
+- indywidualny
+
+koszt miesięczny zależny od oferty: 
+klinet indywidualny 
+
+1.Speedster
+
+Opis: dla osób, które kochają prędkość i streaming w jakości 4K.
+Prędkość: 900 Mb/s
+Hasło: "Nic Cię nie zatrzyma."
+Koszt: 80zł
+2.Domowy Komfort
+
+Opis: idealny do pracy zdalnej, nauki i codziennego surfowania.
+Prędkość: 300 Mb/s
+Hasło: "Internet, który rozumie Twój rytm."
+Koszt: 60 zł
+3.GameON
+
+Opis: oferta stworzona z myślą o graczach i streamerach.
+Prędkość: 600 Mb/s + niski ping + priorytet dla gier
+Hasło: "Zero lagów. Tylko wygrane."
+Koszt: 70 zł
+4.Wszędzie Ty
+
+Opis: internet mobilny z dużym pakietem GB lub nielimitowany, dla tych, którzy są w ciągłym ruchu.
+Technologia: LTE / 5G
+Hasło: "Internet, który idzie za Tobą."
+Koszt: 120 zł
+
+5.UltraNet 1000 - taryfowy
+
+    Prędkość pobierania: do 1000 Mb/s
+    Prędkość wysyłania: do 100 Mb/s
+    Cena miesięczna: 109 zł
+    Umowa: od 6 miesięcy
+    Instalacja: od 1 zł
+    Dodatkowe informacje: Internet bez limitu danych; stały miesięczny abonament
+
+
+
+Umowa na 12 lub 24 miesięce
+Internet dla biznesów: 
+
+1. 4business:
+Opis: Solidna i niezawodna usługa internetowa zaprojektowana z myślą o małych i średnich firmach. Plan 4business zapewnia szybkie i stabilne połączenie, idealne do codziennej pracy biurowej, wideokonferencji, korzystania z systemów chmurowych oraz obsługi klientów online. Dzięki możliwości dodania stałego IP i opcji VPN, oferta świetnie sprawdza się również w przypadku pracy zdalnej i zdalnego zarządzania infrastrukturą.
+Prędkość:  1 Gb/s
+Hasło: "Dla biura, które nie może czekać, bo czas to pieniądz"
+Cena: cena regularana 105 zł + po 3 miesiącach bez rezygnacji cena wynosi 94.99 zł
+
+
+2. 4business - Ultra:
+
+Opis:Profesjonalna usługa internetu dla firm, które nie uznają kompromisów. 4business Ultra to najwyższa wydajność, symetryczne łącze, gwarantowane SLA oraz dostępność opcji backupu LTE i monitoringu 24/7. Idealny wybór dla dużych biur, serwerowni, zespołów IT oraz firm z rozproszoną strukturą. Ultra to nie tylko internet – to cyfrowe bezpieczeństwo i ciągłość działania.
+Prędkość: 1 Gb/s
+Hasło: "Bezpieczeństwo firmy leży w sile łącza."
+Cena: cena regularana 119.99 zł + po 6 miesiącach bez rezygnacji cena wynosi 100 zł
+
+
+
+
+
+
+Implementacja:
+# Dawid
+
+
+
+
+Baza:
+# Ja
+
+
+
+Oferta ?
+
+
+
+Wycena godzinowa ?
+
