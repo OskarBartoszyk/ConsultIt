@@ -1,0 +1,32 @@
+1. Analizę konkurencji
+
+zebrać dane top 6 dostawców internetu
+analiza excel + powerbi
+
+
+
+2. Określenie grup docelowych
+
+-Gospodarstwa domowe
+- małe i średnie firmy
+
+
+
+3. Ustalenie zakresu oferty – opracowanie szczegółów
+pakietów łączonych
+
+
+
+
+4. Harmonogram wdrożenia
+
+1) Miernik sukcesu i ocena ryzyka (KPI, analiza finansowa, analiza swot)
+2) Opracowanie strategii rozwoju
+Ustalenie zakresu, zasobów oraz etapów wdrożenia
+3) Daty i czas wykonania
+4) Testowanie i przygotowanie do uruchomienia
+
+
+5. Wymagania integracyjne – określenie, w jaki sposób
+nowa oferta zostanie powiązana z już istniejącą
+infrastrukturą IT i bazą danych klientów
