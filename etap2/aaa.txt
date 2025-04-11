@@ -1,0 +1,58 @@
+
+Implementacja:
+# Dawid
+
+
+
+
+Baza:
+Stara baza:
+
+      CREATE TABLE IF NOT EXISTS INVOICES (
+            INVOICE_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            CUSTOMER_ID TEXT,
+            CUSTOMER_NAME TEXT
+
+
+      CREATE TABLE IF NOT EXISTS INVOICE_LINES (
+            INVOICE_ID INTEGER,
+            LINE_NUMBER INTEGER,
+            TITLE TEXT CHECK(TITLE IN ('Subscription','Rebate')),
+            LINE_AMOUNT REAL,
+            PRIMARY KEY (INVOICE_ID, LINE_NUMBER),
+            FOREIGN KEY (INVOICE_ID) REFERENCES INVOICES(INVOICE_ID)
+
+
+
+
+
+    Co mamy oraz czego firma może potrzebować:
+    Mamy:
+    - tabele z użytkownikami (id, imie, do jakiej sieci jest podłączony)
+    - tabela z liniami sieci, poszczególnych pozycji na fakturach, gdzie każda faktura (INVOICE_ID) może mieć wiele linii (oznaczonych przez LINE_NUMBER). Linie mogą być albo opłatami za subskrypcję, albo rabatami.
+
+
+    Czego potrzeba do skutecznej rozbudowy:
+    - Jaki pakiet ma wykupiony klient
+    - Status łącza (aktywne, przerwane, w konserwacji)
+    - logi z błędów sieci
+    - zgłoszenia serwioswe dla pracowników i konsulatntów
+
+    Jako konsulatnt do spraw bazodanowych sugerował bym rozbudowę w następujący sposób:
+
+
+    rozbudowę bazy daych w następujący sposób. Dodanie Tabeli subskrypcji, łączności, logów błędów sieciowych oraz zgłoszeń serwisowych (pracownik i konsulatnt)
+
+
+
+
+
+
+
+
+Oferta ?
+
+
+
+Wycena godzinowa ?
+
