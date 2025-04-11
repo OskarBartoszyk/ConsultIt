@@ -62,21 +62,3 @@ Cena: cena regularana 119.99 zł + po 6 miesiącach bez rezygnacji cena wynosi 1
 
 
 
-
-Implementacja:
-# Dawid
-
-
-
-
-Baza:
-# Ja
-
-
-
-Oferta ?
-
-
-
-Wycena godzinowa ?
-
