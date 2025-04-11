@@ -1,32 +1,118 @@
-1. Analizę konkurencji
 
-zebrać dane top 6 dostawców internetu
-analiza excel + powerbi
+1 Analiza zrobiona - osobno
 
+ 2 Określenie grup docelowych
 
+Docelowe segmenty:
+- Gospodarstwa domowe:
+  - Potrzeby: stabilny i szybki internet, rozwiązania multimedialne, streaming w jakości 4K, elastyczne pakiety z niższym kosztem
+- Małe i średnie firmy:
+  - Potrzeby: niezawodne łącze, symetryczne prędkości (lub bardzo wysokie prędkości), dedykowane wsparcie techniczne, usługi dodatkowe (telefonia, VPN, firewall), gwarancje SLA oraz opcje integracji z infrastrukturą IT
 
-2. Określenie grup docelowych
-
--Gospodarstwa domowe
-- małe i średnie firmy
-
-
-
-3. Ustalenie zakresu oferty – opracowanie szczegółów
-pakietów łączonych
-
+Działania:
+- Przeprowadzenie badań rynku i analiza konkurencji
+- Wywiady z przedstawicielami docelowych segmentów, aby dokładnie określić priorytety (np czy dla firm ważne jest bezpieczeństwo i wsparcie, a dla gospodarstw domowych – łatwość użycia i wysoka prędkość)
+- Segmentacja klientów na mniejsze grupy, co umożliwi lepsze dostosowanie pakietów
 
 
 
-4. Harmonogram wdrożenia
-
-1) Miernik sukcesu i ocena ryzyka (KPI, analiza finansowa, analiza swot)
-2) Opracowanie strategii rozwoju
-Ustalenie zakresu, zasobów oraz etapów wdrożenia
-3) Daty i czas wykonania
-4) Testowanie i przygotowanie do uruchomienia
 
 
-5. Wymagania integracyjne – określenie, w jaki sposób
-nowa oferta zostanie powiązana z już istniejącą
-infrastrukturą IT i bazą danych klientów
+ 3 Ustalenie zakresu oferty – opracowanie szczegółów pakietów łączonych
+
+ Oferta dla Gospodarstw Domowych
+
+1 Speedster
+   - Opis: Dla osób, które kochają prędkość i streaming w jakości 4K
+   - Prędkość: 900 Mb/s
+   - Hasło: "Nic Cię nie zatrzyma"
+   - Koszt: 80 zł/mies
+
+2 Domowy Komfort
+   - Opis: Idealny do pracy zdalnej, nauki i codziennego surfowania
+   - Prędkość: 300 Mb/s
+   - Hasło: "Internet, który rozumie Twój rytm"
+   - Koszt: 60 zł/mies
+
+3 GameON
+   - Opis: Oferta stworzona z myślą o graczach i streamerach – z niskim pingiem i priorytetem dla gier
+   - Prędkość: 600 Mb/s (plus niski ping)
+   - Hasło: "Zero lagów Tylko wygrane"
+   - Koszt: 70 zł/mies
+
+4 Wszędzie Ty
+   - Opis: Internet mobilny z dużym pakietem GB lub nielimitowany, dla tych, którzy są w ciągłym ruchu
+   - Technologia: LTE / 5G
+   - Hasło: "Internet, który idzie za Tobą"
+   - Koszt: 120 zł/mies
+
+
+ Oferta dla Biznesu
+
+Umowa dostępna na 12 lub 24 miesiące
+
+1 4Business
+   - Opis: Solidna i niezawodna usługa internetowa zaprojektowana z myślą o małych i średnich firmach Zapewnia szybkie i stabilne połączenie, idealne do codziennej pracy biurowej, wideokonferencji, korzystania z systemów chmurowych oraz obsługi klientów online Opcjonalnie z możliwością dodania stałego IP i VPN
+   - Prędkość: 1 Gb/s
+   - Hasło: "Dla biura, które nie może czekać, bo czas to pieniądz"
+   - Cena: 105 zł/mies (po 3 miesiącach bez rezygnacji: 94,99 zł/mies)
+
+2 4Business – Ultra
+   - Opis: Profesjonalna usługa internetu dla firm, które nie uznają kompromisów Oferuje najwyższą wydajność, symetryczne łącze, gwarantowane SLA, opcję backupu LTE i monitoring 24/7 Dedykowana dla dużych biur, serwerowni i zespołów IT
+   - Prędkość: 1 Gb/s
+   - Hasło: "Bezpieczeństwo firmy leży w sile łącza"
+   - Cena: 119,99 zł/mies (po 6 miesiącach bez rezygnacji: 100 zł/mies)
+
+
+
+
+
+ 4 Harmonogram wdrożenia nowej oferty
+
+Przygotuj harmonogram wdrożenia, który obejmuje następujące etapy:
+
+1 Miernik sukcesu i ocena ryzyka
+   - Zdefiniowanie KPI (np liczba nowych subskrybentów, średni czas obsługi zgłoszeń, wskaźnik awaryjności łącza)
+   - Wykonanie analizy SWOT i analizy finansowej, aby określić potencjalne ryzyka i koszty wdrożenia
+
+2 Opracowanie strategii rozwoju
+   - Ustalenie szczegółowego zakresu oferty, zasobów (ludzkich i technologicznych) oraz etapów wdrożenia
+   - Opracowanie strategii marketingowej i komunikacji – kampanie reklamowe, materiały sprzedażowe i prezentacje dla klientów
+
+3 Daty i czas wykonania
+   - Ustalenie kluczowych kamieni milowych (milestones): rozpoczęcie testów, pilotażowe wdrożenie, pełne uruchomienie
+   - Przydzielenie konkretnych terminów i odpowiedzialnych osób za poszczególne etapy
+
+4 Testowanie i przygotowanie do uruchomienia
+   - Przeprowadzenie testów funkcjonalnych i użytkowych (np beta testy)
+   - Szkolenia wewnętrzne dla zespołów obsługowych i wsparcia technicznego
+   - Ostateczne sprawdzenie gotowości systemu oraz migracji danych (jeśli dotyczy)
+
+
+
+
+
+ 5 Wymagania integracyjne
+
+Aby nowa oferta została dobrze zintegrowana z istniejącą infrastrukturą IT oraz bazą danych klientów, należy:
+
+- Analiza obecnej infrastruktury IT:
+  - Przegląd istniejących systemów CRM, ERP oraz platformy billingowej
+  - Określenie punktów integracyjnych – gdzie konieczne jest połączenie danych nowych ofert z już zbieranymi informacjami
+
+- Rozbudowa bazy danych:
+  - Dodanie nowych kolumn i tabel dedykowanych ofercie
+  - Aktualizacja modeli danych w systemie, aby uwzględniały zarówno oferty indywidualne, jak i biznesowe
+
+- Interfejsy API:
+  - Opracowanie nowych (lub modyfikacja istniejących) endpointów API, które umożliwią synchronizację danych o ofercie między front-endem, systemem sprzedaży, CRM i billingiem
+  - Upewnienie się, że API umożliwia łatwe aktualizacje oferty i jej parametrów
+
+- Integracja systemowa:
+  - Przeprowadzenie testów integracyjnych, aby upewnić się, że wszystkie systemy (np strona www, system billingowy, CRM) poprawnie obsługują nowe pakiety i mogą na bieżąco przekazywać dane o użytkownikach
+  - Zapewnienie wsparcia technicznego i dokumentacji dla działu IT oraz zespołu obsługi klienta, którzy będą korzystać z nowych interfejsów
+
+- Bezpieczeństwo:
+  - Weryfikacja, czy nowe dane oraz integracje nie naruszają istniejących standardów bezpieczeństwa i ochrony danych
+  - Wprowadzenie mechanizmów audytu i monitoringu dostępu do nowych modułów systemu
+
