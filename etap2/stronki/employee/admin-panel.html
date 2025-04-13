@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administracyjny NetSpeed</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="company-name">NetSpeed <span>Panel Administracyjny</span></div>
+            <div class="user-info">
+                <span id="user-name">Jan Kowalski</span>
+                <span id="user-role">Konsultant</span>
+                <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Wyloguj</button>
+            </div>
+        </header>
+
+        <!-- Logowanie -->
+        <div id="login-section" class="login-container">
+            <div class="login-box">
+                <h2>Logowanie do panelu</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Nazwa użytkownika:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Hasło:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Rola:</label>
+                        <select id="role" required>
+                            <option value="">Wybierz rolę...</option>
+                            <option value="consultant">Konsultant</option>
+                            <option value="technician">Pracownik serwisowy</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Zaloguj się</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Panel konsultanta -->
+        <div id="consultant-interface" class="interface">
+            <div class="tabs">
+                <div class="tab active" data-tab="plans">Plany taryfowe</div>
+                <div class="tab" data-tab="invoices">Faktury</div>
+                <div class="tab" data-tab="customers">Klienci</div>
+            </div>
+
+            <!-- Plany taryfowe -->
+            <div id="plans-section" class="content-section active">
+                <h2 class="section-title">Plany taryfowe</h2>
+                <div class="plans-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nazwa planu</th>
+                                <th>Prędkość</th>
+                                <th>Cena</th>
+                                <th>Typ klienta</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Speedster</td>
+                                <td>900 Mb/s</td>
+                                <td>79,99 zł</td>
+                                <td>Indywidualny</td>
+                                <td><button class="view-btn">Szczegóły</button></td>
+                            </tr>
+                            <tr>
+                                <td>Domowy Komfort</td>
+                                <td>300 Mb/s</td>
+                                <td>59,99 zł</td>
+                                <td>Indywidualny</td>
+                                <td><button class="view-btn">Szczegóły</button></td>
+                            </tr>
+                            <tr>
+                                <td>Game On</td>
+                                <td>600 Mb/s</td>
+                                <td>69,99 zł</td>
+                                <td>Indywidualny</td>
+                                <td><button class="view-btn">Szczegóły</button></td>
+                            </tr>
+                            <tr>
+                                <td>4business</td>
+                                <td>1 Gb/s</td>
+                                <td>94,99 zł</td>
+                                <td>Biznesowy</td>
+                                <td><button class="view-btn">Szczegóły</button></td>
+                            </tr>
+                            <tr>
+                                <td>4business Ultra</td>
+                                <td>2 Gb/s</td>
+                                <td>149,99 zł</td>
+                                <td>Biznesowy</td>
+                                <td><button class="view-btn">Szczegóły</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Faktury -->
+            <div id="invoices-section" class="content-section">
+                <h2 class="section-title">Faktury</h2>
+                <div class="invoices-tools">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Szukaj faktury...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <button class="new-invoice-btn"><i class="fas fa-plus"></i> Nowa Faktura</button>
+                </div>
+                <div class="invoice-filters">
+                    <select id="invoice-status">
+                        <option value="all">Wszystkie statusy</option>
+                        <option value="paid">Opłacone</option>
+                        <option value="unpaid">Nieopłacone</option>
+                    </select>
+                    <input type="date" id="invoice-date-from" placeholder="Od">
+                    <input type="date" id="invoice-date-to" placeholder="Do">
+                    <button class="filter-btn">Filtruj</button>
+                </div>
+                <div class="invoices-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nr faktury</th>
+                                <th>Klient</th>
+                                <th>Data wystawienia</th>
+                                <th>Termin płatności</th>
+                                <th>Kwota</th>
+                                <th>Status</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FV/2025/04/001</td>
+                                <td>Jan Nowak</td>
+                                <td>05.04.2025</td>
+                                <td>19.04.2025</td>
+                                <td>79,99 zł</td>
+                                <td><span class="status paid">Opłacona</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="print-btn"><i class="fas fa-print"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FV/2025/04/002</td>
+                                <td>Anna Kowalska</td>
+                                <td>05.04.2025</td>
+                                <td>19.04.2025</td>
+                                <td>59,99 zł</td>
+                                <td><span class="status unpaid">Nieopłacona</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="print-btn"><i class="fas fa-print"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FV/2025/04/003</td>
+                                <td>Tomasz Wiśniewski</td>
+                                <td>06.04.2025</td>
+                                <td>20.04.2025</td>
+                                <td>149,99 zł</td>
+                                <td><span class="status unpaid">Nieopłacona</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="print-btn"><i class="fas fa-print"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Klienci -->
+            <div id="customers-section" class="content-section">
+                <h2 class="section-title">Klienci</h2>
+                <div class="customers-tools">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Szukaj klienta...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="customers-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imię i nazwisko</th>
+                                <th>Email</th>
+                                <th>Telefon</th>
+                                <th>Plan</th>
+                                <th>Status</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CUST_20250401001</td>
+                                <td>Jan Nowak</td>
+                                <td>jan.nowak@example.com</td>
+                                <td>+48 123 456 789</td>
+                                <td>Speedster</td>
+                                <td><span class="status active">Aktywny</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="invoice-btn"><i class="fas fa-file-invoice"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CUST_20250402001</td>
+                                <td>Anna Kowalska</td>
+                                <td>anna.kowalska@example.com</td>
+                                <td>+48 987 654 321</td>
+                                <td>Domowy Komfort</td>
+                                <td><span class="status active">Aktywny</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="invoice-btn"><i class="fas fa-file-invoice"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CUST_20250403001</td>
+                                <td>Tomasz Wiśniewski</td>
+                                <td>tomasz.wisniewski@firma.pl</td>
+                                <td>+48 555 123 456</td>
+                                <td>4business Ultra</td>
+                                <td><span class="status active">Aktywny</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="invoice-btn"><i class="fas fa-file-invoice"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel pracownika serwisowego -->
+        <div id="technician-interface" class="interface">
+            <div class="tabs">
+                <div class="tab active" data-tab="outages">Awarie</div>
+                <div class="tab" data-tab="infrastructure">Infrastruktura</div>
+                <div class="tab" data-tab="service-requests">Zgłoszenia</div>
+                <div class="tab" data-tab="monitoring">Monitoring</div>
+            </div>
+
+            <!-- Awarie -->
+            <div id="outages-section" class="content-section active">
+                <h2 class="section-title">Awarie</h2>
+                <div class="outages-tools">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Szukaj awarii...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <button id="new-outage-btn" class="new-outage-btn"><i class="fas fa-plus"></i> Zgłoś awarię</button>
+                </div>
+                <div class="outages-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Typ</th>
+                                <th>Lokalizacja</th>
+                                <th>Status</th>
+                                <th>Priorytet</th>
+                                <th>Czas zgłoszenia</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>OUT_20250412001</td>
+                                <td>Przerwane łącze</td>
+                                <td>Warszawa, ul. Polna 5</td>
+                                <td><span class="status in-progress">W trakcie</span></td>
+                                <td><span class="priority high">Wysoki</span></td>
+                                <td>12.04.2025 09:45</td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>OUT_20250411002</td>
+                                <td>Awaria sprzętu</td>
+                                <td>Kraków, ul. Długa 10</td>
+                                <td><span class="status resolved">Rozwiązana</span></td>
+                                <td><span class="priority medium">Średni</span></td>
+                                <td>11.04.2025 16:30</td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>OUT_20250410003</td>
+                                <td>Brak zasilania</td>
+                                <td>Poznań, ul. Krótka 8</td>
+                                <td><span class="status open">Otwarta</span></td>
+                                <td><span class="priority high">Wysoki</span></td>
+                                <td>10.04.2025 14:15</td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Infrastruktura -->
+            <div id="infrastructure-section" class="content-section">
+                <h2 class="section-title">Infrastruktura sieciowa</h2>
+                <div class="infrastructure-tools">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Szukaj elementu...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="infrastructure-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID węzła</th>
+                                <th>Nazwa</th>
+                                <th>Typ</th>
+                                <th>Lokalizacja</th>
+                                <th>Status</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>NODE_001</td>
+                                <td>Główny router</td>
+                                <td>Router</td>
+                                <td>Warszawa, Centrum</td>
+                                <td><span class="status active">Aktywny</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>NODE_002</td>
+                                <td>Switch dystrybucyjny</td>
+                                <td>Switch</td>
+                                <td>Warszawa, Północ</td>
+                                <td><span class="status active">Aktywny</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>NODE_003</td>
+                                <td>Antena sektorowa</td>
+                                <td>Antena</td>
+                                <td>Warszawa, Wschód</td>
+                                <td><span class="status maintenance">Konserwacja</span></td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Zgłoszenia serwisowe -->
+            <div id="service-requests-section" class="content-section">
+                <h2 class="section-title">Zgłoszenia serwisowe</h2>
+                <div class="service-requests-tools">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Szukaj zgłoszenia...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="service-requests-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Klient</th>
+                                <th>Opis</th>
+                                <th>Status</th>
+                                <th>Priorytet</th>
+                                <th>Data utworzenia</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SR_20250412001</td>
+                                <td>Jan Nowak</td>
+                                <td>Problem z prędkością internetu</td>
+                                <td><span class="status open">Otwarte</span></td>
+                                <td><span class="priority medium">Średni</span></td>
+                                <td>12.04.2025 10:15</td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SR_20250411002</td>
+                                <td>Anna Kowalska</td>
+                                <td>Brak internetu</td>
+                                <td><span class="status in-progress">W trakcie</span></td>
+                                <td><span class="priority high">Wysoki</span></td>
+                                <td>11.04.2025 14:30</td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SR_20250410003</td>
+                                <td>Tomasz Wiśniewski</td>
+                                <td>Awaria routera</td>
+                                <td><span class="status closed">Zamknięte</span></td>
+                                <td><span class="priority medium">Średni</span></td>
+                                <td>10.04.2025 09:45</td>
+                                <td>
+                                    <button class="view-btn"><i class="fas fa-eye"></i></button>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Monitoring -->
+            <div id="monitoring-section" class="content-section">
+                <h2 class="section-title">Monitoring sieci</h2>
+                <div class="monitoring-dashboard">
+                    <div class="dashboard-card">
+                        <h3>Status usług</h3>
+                        <div class="status-indicator">
+                            <div class="indicator-item">
+                                <div class="indicator active"></div>
+                                <span>Internet: Aktywny</span>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator active"></div>
+                                <span>DNS: Aktywny</span>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator warning"></div>
+                                <span>Email: Problemy</span>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator active"></div>
+                                <span>VoIP: Aktywny</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Obciążenie sieci</h3>
+                        <div class="network-load">
+                            <div class="load-bar">
+                                <div class="load-progress" style="width: 65%;"></div>
+                            </div>
+                            <span>65% obciążenia</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Aktywne awarie</h3>
+                        <div class="active-issues">
+                            <div class="issue-count">
+                                <span class="count">2</span>
+                                <span class="label">Krytyczne</span>
+                            </div>
+                            <div class="issue-count">
+                                <span class="count">5</span>
+                                <span class="label">Wszystkie</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Dostępność sieci</h3>
+                        <div class="availability">
+                            <div class="availability-chart">99.8%</div>
+                            <span>Ostatnie 30 dni</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modalne okna -->
+        <div id="outage-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Zgłoś nową awarię</h2>
+                <form id="outage-form">
+                    <div class="form-group">
+                        <label for="outage-type">Typ awarii:</label>
+                        <select id="outage-type" required>
+                            <option value="">Wybierz...</option>
+                            <option value="connection">Przerwane łącze</option>
+                            <option value="hardware">Awaria sprzętu</option>
+                            <option value="software">Problem z oprogramowaniem</option>
+                            <option value="power">Brak zasilania</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="outage-location">Lokalizacja:</label>
+                        <input type="text" id="outage-location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="outage-description">Opis:</label>
+                        <textarea id="outage-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="outage-priority">Priorytet:</label>
+                        <select id="outage-priority" required>
+                            <option value="low">Niski</option>
+                            <option value="medium" selected>Średni</option>
+                            <option value="high">Wysoki</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="outage-image">Zdjęcia (opcjonalnie):</label>
+                        <input type="file" id="outage-image" multiple accept="image/*">
+                    </div>
+                    <button type="submit" class="submit-btn">Zgłoś awarię</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="invoice-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Generuj nową fakturę</h2>
+                <form id="invoice-form">
+                    <div class="form-group">
+                        <label for="invoice-client">Klient:</label>
+                        <select id="invoice-client" required>
+                            <option value="">Wybierz klienta...</option>
+                            <option value="CUST_20250401001">Jan Nowak</option>
+                            <option value="CUST_20250402001">Anna Kowalska</option>
+                            <option value="CUST_20250403001">Tomasz Wiśniewski</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-service">Usługa:</label>
+                        <select id="invoice-service" required>
+                            <option value="">Wybierz usługę...</option>
+                            <option value="speedster">Speedster - 79,99 zł</option>
+                            <option value="home-comfort">Domowy Komfort - 59,99 zł</option>
+                            <option value="4business-ultra">4business Ultra - 149,99 zł</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-period">Okres rozliczeniowy:</label>
+                        <input type="month" id="invoice-period" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-date">Data wystawienia:</label>
+                        <input type="date" id="invoice-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-payment-date">Termin płatności:</label>
+                        <input type="date" id="invoice-payment-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-notes">Uwagi:</label>
+                        <textarea id="invoice-notes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Generuj fakturę</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 NetSpeed ISP. Wszelkie prawa zastrzeżone.</p>
+        </footer>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
