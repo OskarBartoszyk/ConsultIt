@@ -8,6 +8,20 @@ const PORT = 8080;
 // Middleware
 app.use(bodyParser.json());
 
+// Middleware sprawdzający rolę użytkownika
+function checkRole(requiredRole) {
+  return (req, res, next) => {
+    const userRole = req.headers['x-role'];  // Odczytujemy rolę z nagłówka X-Role
+    if (!userRole) {
+      return res.status(401).json({ error: 'Brak nagłówka x-role - nieautoryzowany dostęp.' });
+    }
+    if (userRole !== requiredRole) {
+      return res.status(403).json({ error: `Dostęp zarezerwowany dla roli "${requiredRole}" (obecnie: "${userRole}").` });
+    }
+    next();
+  };
+}
+
 // Połączenie z bazą danych SQLite
 const db = new sqlite3.Database('../database.db', (err) => {
   if (err) {
@@ -17,9 +31,12 @@ const db = new sqlite3.Database('../database.db', (err) => {
   }
 });
 
-// API dla pracowników serwisowych
-// Pobieranie listy awarii
-app.get('/outages', (req, res) => {
+/*
+  API dla serwisantów (obsługa awarii i infrastruktury)
+*/
+
+// Pobieranie listy awarii (tylko dla roli "service")
+app.get('/outages', checkRole('service'), (req, res) => {
   const query = `
     SELECT * FROM SERVICE_REQUESTS 
     WHERE STATUS IN ('otwarte', 'w trakcie')
@@ -36,8 +53,8 @@ app.get('/outages', (req, res) => {
   });
 });
 
-// Dodawanie nowej awarii
-app.post('/outages', (req, res) => {
+// Dodawanie nowej awarii (tylko dla roli "service")
+app.post('/outages', checkRole('service'), (req, res) => {
   const { customerId, description, priority, assignedTo } = req.body;
   const now = new Date().toISOString();
   
@@ -59,8 +76,8 @@ app.post('/outages', (req, res) => {
   });
 });
 
-// Aktualizacja statusu awarii
-app.put('/outages/:id', (req, res) => {
+// Aktualizacja statusu awarii (tylko dla roli "service")
+app.put('/outages/:id', checkRole('service'), (req, res) => {
   const { id } = req.params;
   const { status, description } = req.body;
   const now = new Date().toISOString();
@@ -84,8 +101,8 @@ app.put('/outages/:id', (req, res) => {
   });
 });
 
-// Pobieranie danych infrastruktury
-app.get('/infrastructure', (req, res) => {
+// Pobieranie danych infrastruktury (tylko dla roli "service")
+app.get('/infrastructure', checkRole('service'), (req, res) => {
   const query = 'SELECT * FROM NETWORK_INFRASTRUCTURE';
   
   db.all(query, (err, rows) => {
@@ -98,11 +115,13 @@ app.get('/infrastructure', (req, res) => {
   });
 });
 
-// API dla konsultantów
-// Pobieranie planów taryfowych
-app.get('/plans', (req, res) => {
-  // Tutaj należałoby utworzyć tabelę z planami w bazie danych
-  // Na potrzeby demonstracji zwracamy testowe dane
+/*
+  API dla konsultantów (obsługa planów, klientów i fakturowania)
+*/
+
+// Pobieranie planów taryfowych (tylko dla roli "consultant")
+app.get('/plans', checkRole('consultant'), (req, res) => {
+  // Testowe dane – w przyszłości można zmienić na pobieranie z bazy
   res.json([
     { id: 1, name: 'Speedster', speed: '900 Mb/s', price: '79.99', type: 'Indywidualny' },
     { id: 2, name: 'Domowy Komfort', speed: '300 Mb/s', price: '59.99', type: 'Indywidualny' },
@@ -112,8 +131,8 @@ app.get('/plans', (req, res) => {
   ]);
 });
 
-// Pobieranie listy klientów
-app.get('/customers', (req, res) => {
+// Pobieranie listy klientów (tylko dla roli "consultant")
+app.get('/customers', checkRole('consultant'), (req, res) => {
   const query = 'SELECT * FROM CUSTOMERS';
   
   db.all(query, (err, rows) => {
@@ -126,8 +145,8 @@ app.get('/customers', (req, res) => {
   });
 });
 
-// Tworzenie faktury
-app.post('/invoices', (req, res) => {
+// Tworzenie faktury (tylko dla roli "consultant")
+app.post('/invoices', checkRole('consultant'), (req, res) => {
   const { customerId, customerName, lines } = req.body;
   
   db.run('BEGIN TRANSACTION');
@@ -177,8 +196,8 @@ app.post('/invoices', (req, res) => {
   );
 });
 
-// Pobieranie faktur
-app.get('/invoices', (req, res) => {
+// Pobieranie faktur (tylko dla roli "consultant")
+app.get('/invoices', checkRole('consultant'), (req, res) => {
   const query = `
     SELECT i.INVOICE_ID, i.CUSTOMER_ID, i.CUSTOMER_NAME, 
            GROUP_CONCAT(il.LINE_AMOUNT) as AMOUNTS
