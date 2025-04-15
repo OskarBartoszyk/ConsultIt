@@ -9,10 +9,10 @@ Stworzyłem to README, aby rozwiać niektóre możliwe wątpliwości
    Załączone strony internetowe pełnią funkcję wizualizacyjną dla przedstawionych w projekcie danych i koncepcji + taki dodatek :D
 
 3. Zadanie dodatkowe - metodologia 
-   Ze względu na ograniczoną liczbę slajdów prezentacyjnych (7), konieczna była optymalizacja przedstawianych treści. Proces przetwarzania danych zrealizowano z wykorzystaniem następujących narzędzi:
-   - Microsoft Excel - analiza statystyczna i przetwarzanie danych
-   - Power BI - tworzenie zaawansowanych wizualizacji analitycznych
-   - Figma - projektowanie i wykonanie elementów graficznych
+   Ze względu na ograniczoną liczbę slajdów prezentacyjnych (7), konieczna była optymalizacja przedstawianych treści. Proces przetwarzania danych zrealizowałem z wykorzystaniem następujących narzędzi:
+   - Microsoft Excel - przetwarzanie danych
+   - Power BI - wizualizacja danych
+   - Figma - zaprojektowanie grafik reprezentatywnych 
  
  
  Źródła:
